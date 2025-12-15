@@ -22,7 +22,7 @@ cd BiNSC/Lab02
 * Dockerfile.attacker - plik definiujący obraz kontenera atakującego
 * Dockerfile.client - plik definiujący obraz kontenera ofiary
 * folder attacker_fles - pliki konfiguracyjne i skrypty dla kontenera atakującego
-
+* 
 ### Uruchomienie środowiska i struktura sieci
 Polecenia:
 ```bash
