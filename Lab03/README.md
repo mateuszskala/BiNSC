@@ -1,5 +1,7 @@
 # Scenariusz 3: SSL Stripping z HTTP Toolkit
 
+# Instrukcja do zadania oraz polecenia znajduje się w pliku pdf!
+
 ## Opis scenariusza
 
 SSL stripping to technika polegająca na usuwaniu szyfrowania HTTPS i konwersji komunikacji na nieszyfrowane HTTP. Atakujący przechwytuje ruch HTTPS i zastępuje go komunikacją z klientem przy użyciu własnego certyfikatu. W tym scenariuszu implementujemy **transparent proxy mode**, gdzie klient nie ma wiedzy o istnieniu proxy.
