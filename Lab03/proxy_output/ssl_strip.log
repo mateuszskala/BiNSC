@@ -1,0 +1,70 @@
+[14:08:56.643] Loading script /proxy/ssl_interceptor.py
+[14:08:56.647] Transparent Proxy listening at *:8080.
+[14:09:06.795][172.22.0.2:41604] client connect
+[14:09:06.796][172.22.0.2:41604] server connect 172.22.0.4:443
+
+[2025-12-15 14:09:06] Request #1
+  URL: https://172.22.0.4/post
+  Method: POST
+  Host: 172.22.0.4
+  Scheme: https
+  Headers:
+    Host: 172.22.0.4
+    User-Agent: curl/8.14.1
+    Accept: */*
+    Content-Length: 39
+    Content-Type: application/x-www-form-urlencoded
+  Body: username=student&password=tajnehaslo123
+
+[2025-12-15 14:09:06] Response
+  URL: https://172.22.0.4/post
+  Status: 200
+  Content-Type: application/json
+  Content-Length: 322 bytes
+172.22.0.2:41604: POST https://172.22.0.4/post
+               << 200 OK 322b
+[14:09:06.889][172.22.0.2:41604] client disconnect
+[14:09:06.889][172.22.0.2:41604] server disconnect 172.22.0.4:443
+[14:09:06.905][172.22.0.2:41612] client connect
+[14:09:06.906][172.22.0.2:41612] server connect 172.22.0.4:443
+
+[2025-12-15 14:09:06] Request #2
+  URL: https://172.22.0.4/headers
+  Method: GET
+  Host: 172.22.0.4
+  Scheme: https
+  Headers:
+    Host: 172.22.0.4
+    User-Agent: curl/8.14.1
+    Accept: */*
+    Authorization: Bearer token_abc123xyz
+
+[2025-12-15 14:09:06] Response
+  URL: https://172.22.0.4/headers
+  Status: 200
+  Content-Type: application/json
+  Content-Length: 138 bytes
+172.22.0.2:41612: GET https://172.22.0.4/headers
+               << 200 OK 138b
+[14:09:06.944][172.22.0.2:41612] client disconnect
+[14:09:06.944][172.22.0.2:41612] server disconnect 172.22.0.4:443
+[14:09:06.961][172.22.0.2:41628] client connect
+[14:09:06.961][172.22.0.2:41628] server connect 172.22.0.4:443
+
+[2025-12-15 14:09:06] Request #3
+  URL: https://172.22.0.4/get
+  Method: GET
+  Host: 172.22.0.4
+  Scheme: https
+  Headers:
+    Host: 172.22.0.4
+    User-Agent: curl/8.14.1
+    Accept: */*
+
+[2025-12-15 14:09:06] Response
+  URL: https://172.22.0.4/get
+  Status: 200
+  Content-Type: application/json
+  Content-Length: 158 bytes
+172.22.0.2:41628: GET https://172.22.0.4/get
+               << 200 OK 158b

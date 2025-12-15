@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.ssl_client
+    platform: linux/amd64
     container_name: ssl_client
     networks:
       ssl_network:
@@ -13,11 +14,12 @@ services:
     tty: true
     depends_on:
       - ssl_interceptor
-
+      
   ssl_interceptor:
     build:
       context: .
       dockerfile: Dockerfile.ssl_proxy
+    platform: linux/amd64
     container_name: ssl_interceptor
     networks:
       ssl_network:
@@ -31,9 +33,11 @@ services:
       - ./proxy_output:/proxy/output
     stdin_open: true
     tty: true
-
+    
   target_server:
-    image: kennethreitz/httpbin:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.target_server
     platform: linux/amd64
     container_name: target_server
     networks:
@@ -41,7 +45,7 @@ services:
         ipv4_address: 172.22.0.4
     expose:
       - "80"
-
+      - "443"      
 networks:
   ssl_network:
     driver: bridge

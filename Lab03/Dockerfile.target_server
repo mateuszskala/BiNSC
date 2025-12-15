@@ -1,0 +1,48 @@
+# syntax=docker/dockerfile:1
+FROM --platform=linux/amd64 alpine:3.19
+
+# Install build dependencies, Python, httpbin, and nginx
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    openssl \
+    nginx \
+    gcc \
+    musl-dev \
+    python3-dev \
+    libffi-dev && \
+    pip3 install --break-system-packages httpbin gunicorn && \
+    apk del gcc musl-dev python3-dev libffi-dev
+
+# Generate self-signed SSL certificate
+RUN mkdir -p /etc/nginx/ssl && \
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /etc/nginx/ssl/server.key \
+    -out /etc/nginx/ssl/server.crt \
+    -subj "/C=US/ST=Lab/L=Lab/O=Lab/CN=172.22.0.4"
+
+# Create nginx config
+RUN echo 'events { worker_connections 1024; }' > /etc/nginx/nginx.conf && \
+    echo 'http {' >> /etc/nginx/nginx.conf && \
+    echo '  server {' >> /etc/nginx/nginx.conf && \
+    echo '    listen 80;' >> /etc/nginx/nginx.conf && \
+    echo '    listen 443 ssl;' >> /etc/nginx/nginx.conf && \
+    echo '    ssl_certificate /etc/nginx/ssl/server.crt;' >> /etc/nginx/nginx.conf && \
+    echo '    ssl_certificate_key /etc/nginx/ssl/server.key;' >> /etc/nginx/nginx.conf && \
+    echo '    location / {' >> /etc/nginx/nginx.conf && \
+    echo '      proxy_pass http://127.0.0.1:8080;' >> /etc/nginx/nginx.conf && \
+    echo '      proxy_set_header Host $host;' >> /etc/nginx/nginx.conf && \
+    echo '      proxy_set_header X-Real-IP $remote_addr;' >> /etc/nginx/nginx.conf && \
+    echo '    }' >> /etc/nginx/nginx.conf && \
+    echo '  }' >> /etc/nginx/nginx.conf && \
+    echo '}' >> /etc/nginx/nginx.conf
+
+# Create startup script
+RUN echo '#!/bin/sh' > /start.sh && \
+    echo 'nginx' >> /start.sh && \
+    echo 'exec gunicorn -b 127.0.0.1:8080 httpbin:app' >> /start.sh && \
+    chmod +x /start.sh
+
+EXPOSE 80 443
+
+CMD ["/start.sh"]
