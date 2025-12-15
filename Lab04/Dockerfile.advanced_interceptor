@@ -1,0 +1,14 @@
+FROM python:3.10-slim
+
+RUN pip install "mitmproxy==11.0.2" requests
+
+WORKDIR /app
+COPY intercept_advanced.py /app/
+
+RUN apt-get update && apt-get install -y \
+    iptables \
+    net-tools \
+    tcpdump \
+    && rm -rf /var/lib/apt/lists/*
+
+CMD ["mitmdump", "-s", "/app/intercept_advanced.py", "--listen-port", "8080"]

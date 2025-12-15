@@ -1,0 +1,17 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    tcpdump \
+    net-tools \
+    iputils-ping \
+    iproute2 \
+    dnsutils \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+COPY client_setup.sh /usr/local/bin/client_setup.sh
+RUN chmod +x /usr/local/bin/client_setup.sh
+
+CMD ["/usr/local/bin/client_setup.sh"]

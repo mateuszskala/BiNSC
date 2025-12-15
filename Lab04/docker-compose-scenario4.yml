@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  client:
+    image: ubuntu:22.04
+    container_name: advanced_client
+    networks:
+      intercept_network:
+        ipv4_address: 172.20.0.2
+    environment:
+      - HTTP_PROXY=http://172.20.0.3:8080
+      - HTTPS_PROXY=http://172.20.0.3:8080
+    volumes:
+      - ./client_scripts:/workspace
+    command: /bin/sleep 3600
+    stdin_open: true
+    tty: true
+
+  interceptor:
+    build:
+      context: .
+      dockerfile: Dockerfile.advanced_interceptor
+    container_name: advanced_interceptor
+    networks:
+      intercept_network:
+        ipv4_address: 172.20.0.3
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./intercept_logs:/app/logs
+    stdin_open: true
+    tty: true
+
+  web_server:
+    image: mccutchen/go-httpbin
+
+    container_name: httpbin_server
+    networks:
+      intercept_network:
+        ipv4_address: 172.20.0.4
+    expose:
+      - "80"
+
+networks:
+  intercept_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

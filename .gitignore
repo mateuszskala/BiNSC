@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+Lab04/intercept_logs/
+
+# OS
+.DS_Store
+Thumbs.db

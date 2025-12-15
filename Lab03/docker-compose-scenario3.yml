@@ -1,0 +1,50 @@
+services:
+  ssl_client:
+    build:
+      context: .
+      dockerfile: Dockerfile.ssl_client
+    container_name: ssl_client
+    networks:
+      ssl_network:
+        ipv4_address: 172.22.0.2
+    cap_add:
+      - NET_ADMIN
+    stdin_open: true
+    tty: true
+    depends_on:
+      - ssl_interceptor
+
+  ssl_interceptor:
+    build:
+      context: .
+      dockerfile: Dockerfile.ssl_proxy
+    container_name: ssl_interceptor
+    networks:
+      ssl_network:
+        ipv4_address: 172.22.0.3
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    sysctls:
+      - net.ipv4.ip_forward=1
+    volumes:
+      - ./proxy_output:/proxy/output
+    stdin_open: true
+    tty: true
+
+  target_server:
+    image: kennethreitz/httpbin:latest
+    platform: linux/amd64
+    container_name: target_server
+    networks:
+      ssl_network:
+        ipv4_address: 172.22.0.4
+    expose:
+      - "80"
+
+networks:
+  ssl_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/24
