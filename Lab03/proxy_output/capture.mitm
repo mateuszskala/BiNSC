@@ -1,0 +1,67 @@
+3847:9:websocket;0:~8:response;805:6:reason;2:OK,11:status_code;3:200#13:timestamp_end;18:1765807746.8832724^15:timestamp_start;18:1765807746.8829107^8:trailers;0:~7:content;322:{"args":{},"data":"","files":{},"form":{"password":"tajnehaslo123","username":"student"},"headers":{"Accept":"*/*","Connection":"close","Content-Length":"39","Content-Type":"application/x-www-form-urlencoded","Host":"172.22.0.4","User-Agent":"curl/8.14.1"},"json":null,"origin":"127.0.0.1","url":"http://172.22.0.4/post"}
+,7:headers;297:25:6:Server,12:nginx/1.24.0,]40:4:Date,29:Mon, 15 Dec 2025 14:09:06 GMT,]36:12:Content-Type,16:application/json,]24:14:Content-Length,3:322,]28:10:Connection,10:keep-alive,]35:27:Access-Control-Allow-Origin,1:*,]43:32:Access-Control-Allow-Credentials,4:true,]34:16:X-Intercepted-By,10:MitM-Lab03,]]12:http_version;8:HTTP/1.1,}7:request;447:4:path;5:/post,9:authority;0:,6:scheme;5:https,6:method;4:POST,4:port;3:443#4:host;10:172.22.0.4;13:timestamp_end;18:1765807746.8770099^15:timestamp_start;18:1765807746.8765128^8:trailers;0:~7:content;39:username=student&password=tajnehaslo123,7:headers;161:21:4:Host,10:172.22.0.4,]29:10:User-Agent,11:curl/8.14.1,]15:6:Accept,3:*/*,]23:14:Content-Length,2:39,]53:12:Content-Type,33:application/x-www-form-urlencoded,]]12:http_version;8:HTTP/1.1,}6:backup;0:~17:timestamp_created;18:1765807746.8766522^7:comment;0:;8:metadata;0:}6:marked;0:;9:is_replay;0:~11:intercepted;5:false!11:server_conn;1810:3:via;0:~19:timestamp_tcp_setup;18:1765807746.7966013^7:address;20:10:172.22.0.4;3:443#]19:timestamp_tls_setup;17:1765807746.848214^13:timestamp_end;0:~15:timestamp_start;18:1765807746.7958894^3:sni;10:172.22.0.4;11:tls_version;7:TLSv1.3;11:cipher_list;0:]6:cipher;22:TLS_AES_256_GCM_SHA384;11:alpn_offers;16:2:h2,8:http/1.1,]4:alpn;8:http/1.1,16:certificate_list;1271:1265:-----BEGIN CERTIFICATE-----
+MIIDeTCCAmGgAwIBAgIUQLCan+DLYtrnyjjGW1sPChEKAuowDQYJKoZIhvcNAQEL
+BQAwTDELMAkGA1UEBhMCVVMxDDAKBgNVBAgMA0xhYjEMMAoGA1UEBwwDTGFiMQww
+CgYDVQQKDANMYWIxEzARBgNVBAMMCjE3Mi4yMi4wLjQwHhcNMjUxMjE1MTQwNzUz
+WhcNMjYxMjE1MTQwNzUzWjBMMQswCQYDVQQGEwJVUzEMMAoGA1UECAwDTGFiMQww
+CgYDVQQHDANMYWIxDDAKBgNVBAoMA0xhYjETMBEGA1UEAwwKMTcyLjIyLjAuNDCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIaitnTPhvOva0BOwVAAMmGp
+wbbJ8tfJzEeqrKGULzsmYUDEAECTa2OMqnnplsR5n1RI0pGPXeOIEpA5uYV4XJjX
+8phL7U4iDQ+DHZl620Q8HU4nmF687H4d5x1qbgvxZldszodp2ejpcycz8KcbeFAO
+6zs43ROLZmaxlGyhbyRe6DeCdXAerVJmgIzkr40Cesm2hgo2y32eJo+hR+zUCias
+bBZyuYAUC9zoyKQAvO8IIvqMd2daQbt6shvyad59Dbl+dDh7Gkj90xh4zQfXH9Rk
+fDvU3lVAqNo2bqeRftpCmyn5SVtsNbGaMJTKljTIwIKSIaGYISwdRn+JHel8i10C
+AwEAAaNTMFEwHQYDVR0OBBYEFOJcZkC77tgUEKhHgwNtXoJLI3RCMB8GA1UdIwQY
+MBaAFOJcZkC77tgUEKhHgwNtXoJLI3RCMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZI
+hvcNAQELBQADggEBACQcCpBxxIQ4vWssVHj88VJR/ubDKFN4AVgPqpJ6k/rsnYWp
+zZhBpK7sQDKYbmx2cNRZiESTpGWfuIUDU2f64bJs/JSjvyul360LGdyvpWg7/4u3
+pbIJ9XKE1bL5iAkTmnw5I33twn3Om6vbMSUA9ry/8qDKWxGUHohsTlfhLi2D1ygg
+OP8mY/PvNJoJA92vCdN4zvkyHgP1Mmujc1Cba8w1gu8eU4eF2DhiT3CF4zFxpiB0
+mWuCyiDAiwdlgZJgl2gXYtfDLGKG4l5eZj/cEeKRXiDTmh1q3LQ51sCAk73p4M+i
+EJthdST2cLDWFiq0ESvK2xf2ewrLV/WaPGBoMh8=
+-----END CERTIFICATE-----
+,]3:tls;4:true!5:error;0:~18:transport_protocol;3:tcp;2:id;36:a70ca2c5-034e-4987-aa4b-d822769a0292;8:sockname;22:10:172.22.0.3;5:33906#]8:peername;20:10:172.22.0.4;3:443#]}11:client_conn;481:10:proxy_mode;11:transparent;8:mitmcert;0:~19:timestamp_tls_setup;18:1765807746.8745291^13:timestamp_end;0:~15:timestamp_start;18:1765807746.7941878^3:sni;0:~11:tls_version;7:TLSv1.3;11:cipher_list;0:]6:cipher;22:TLS_AES_256_GCM_SHA384;11:alpn_offers;16:2:h2,8:http/1.1,]4:alpn;8:http/1.1,16:certificate_list;0:]3:tls;4:true!5:error;0:~18:transport_protocol;3:tcp;2:id;36:dcc55d35-a190-4360-b175-fe0ef1c0598c;8:sockname;20:10:172.22.0.4;3:443#]8:peername;22:10:172.22.0.2;5:41604#]}5:error;0:~2:id;36:bb805f4e-4893-4795-888e-13182c8b7e51;4:type;4:http;7:version;2:21#}3588:9:websocket;0:~8:response;621:6:reason;2:OK,11:status_code;3:200#13:timestamp_end;18:1765807746.9402468^15:timestamp_start;18:1765807746.9399488^8:trailers;0:~7:content;138:{"headers":{"Accept":"*/*","Authorization":"Bearer token_abc123xyz","Connection":"close","Host":"172.22.0.4","User-Agent":"curl/8.14.1"}}
+,7:headers;297:25:6:Server,12:nginx/1.24.0,]40:4:Date,29:Mon, 15 Dec 2025 14:09:06 GMT,]36:12:Content-Type,16:application/json,]24:14:Content-Length,3:138,]28:10:Connection,10:keep-alive,]35:27:Access-Control-Allow-Origin,1:*,]43:32:Access-Control-Allow-Credentials,4:true,]34:16:X-Intercepted-By,10:MitM-Lab03,]]12:http_version;8:HTTP/1.1,}7:request;372:4:path;8:/headers,9:authority;0:,6:scheme;5:https,6:method;3:GET,4:port;3:443#4:host;10:172.22.0.4;13:timestamp_end;18:1765807746.9384408^15:timestamp_start;18:1765807746.9380977^8:trailers;0:~7:content;0:,7:headers;124:21:4:Host,10:172.22.0.4,]29:10:User-Agent,11:curl/8.14.1,]15:6:Accept,3:*/*,]43:13:Authorization,22:Bearer token_abc123xyz,]]12:http_version;8:HTTP/1.1,}6:backup;0:~17:timestamp_created;18:1765807746.9382021^7:comment;0:;8:metadata;0:}6:marked;0:;9:is_replay;0:~11:intercepted;5:false!11:server_conn;1810:3:via;0:~19:timestamp_tcp_setup;18:1765807746.9060109^7:address;20:10:172.22.0.4;3:443#]19:timestamp_tls_setup;18:1765807746.9201374^13:timestamp_end;0:~15:timestamp_start;17:1765807746.905733^3:sni;10:172.22.0.4;11:tls_version;7:TLSv1.3;11:cipher_list;0:]6:cipher;22:TLS_AES_256_GCM_SHA384;11:alpn_offers;16:2:h2,8:http/1.1,]4:alpn;8:http/1.1,16:certificate_list;1271:1265:-----BEGIN CERTIFICATE-----
+MIIDeTCCAmGgAwIBAgIUQLCan+DLYtrnyjjGW1sPChEKAuowDQYJKoZIhvcNAQEL
+BQAwTDELMAkGA1UEBhMCVVMxDDAKBgNVBAgMA0xhYjEMMAoGA1UEBwwDTGFiMQww
+CgYDVQQKDANMYWIxEzARBgNVBAMMCjE3Mi4yMi4wLjQwHhcNMjUxMjE1MTQwNzUz
+WhcNMjYxMjE1MTQwNzUzWjBMMQswCQYDVQQGEwJVUzEMMAoGA1UECAwDTGFiMQww
+CgYDVQQHDANMYWIxDDAKBgNVBAoMA0xhYjETMBEGA1UEAwwKMTcyLjIyLjAuNDCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIaitnTPhvOva0BOwVAAMmGp
+wbbJ8tfJzEeqrKGULzsmYUDEAECTa2OMqnnplsR5n1RI0pGPXeOIEpA5uYV4XJjX
+8phL7U4iDQ+DHZl620Q8HU4nmF687H4d5x1qbgvxZldszodp2ejpcycz8KcbeFAO
+6zs43ROLZmaxlGyhbyRe6DeCdXAerVJmgIzkr40Cesm2hgo2y32eJo+hR+zUCias
+bBZyuYAUC9zoyKQAvO8IIvqMd2daQbt6shvyad59Dbl+dDh7Gkj90xh4zQfXH9Rk
+fDvU3lVAqNo2bqeRftpCmyn5SVtsNbGaMJTKljTIwIKSIaGYISwdRn+JHel8i10C
+AwEAAaNTMFEwHQYDVR0OBBYEFOJcZkC77tgUEKhHgwNtXoJLI3RCMB8GA1UdIwQY
+MBaAFOJcZkC77tgUEKhHgwNtXoJLI3RCMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZI
+hvcNAQELBQADggEBACQcCpBxxIQ4vWssVHj88VJR/ubDKFN4AVgPqpJ6k/rsnYWp
+zZhBpK7sQDKYbmx2cNRZiESTpGWfuIUDU2f64bJs/JSjvyul360LGdyvpWg7/4u3
+pbIJ9XKE1bL5iAkTmnw5I33twn3Om6vbMSUA9ry/8qDKWxGUHohsTlfhLi2D1ygg
+OP8mY/PvNJoJA92vCdN4zvkyHgP1Mmujc1Cba8w1gu8eU4eF2DhiT3CF4zFxpiB0
+mWuCyiDAiwdlgZJgl2gXYtfDLGKG4l5eZj/cEeKRXiDTmh1q3LQ51sCAk73p4M+i
+EJthdST2cLDWFiq0ESvK2xf2ewrLV/WaPGBoMh8=
+-----END CERTIFICATE-----
+,]3:tls;4:true!5:error;0:~18:transport_protocol;3:tcp;2:id;36:5f6f3d22-2310-4dc3-80b5-54c0b99d3a73;8:sockname;22:10:172.22.0.3;5:33914#]8:peername;20:10:172.22.0.4;3:443#]}11:client_conn;481:10:proxy_mode;11:transparent;8:mitmcert;0:~19:timestamp_tls_setup;18:1765807746.9354827^13:timestamp_end;0:~15:timestamp_start;18:1765807746.9053075^3:sni;0:~11:tls_version;7:TLSv1.3;11:cipher_list;0:]6:cipher;22:TLS_AES_256_GCM_SHA384;11:alpn_offers;16:2:h2,8:http/1.1,]4:alpn;8:http/1.1,16:certificate_list;0:]3:tls;4:true!5:error;0:~18:transport_protocol;3:tcp;2:id;36:ec94681a-d51d-4d2f-856c-ea7e08643b4d;8:sockname;20:10:172.22.0.4;3:443#]8:peername;22:10:172.22.0.2;5:41612#]}5:error;0:~2:id;36:b716d439-6f48-4681-9de0-3b83b35eafa4;4:type;4:http;7:version;2:21#}3556:9:websocket;0:~8:response;641:6:reason;2:OK,11:status_code;3:200#13:timestamp_end;18:1765807746.9942513^15:timestamp_start;18:1765807746.9939406^8:trailers;0:~7:content;158:{"args":{},"headers":{"Accept":"*/*","Connection":"close","Host":"172.22.0.4","User-Agent":"curl/8.14.1"},"origin":"127.0.0.1","url":"http://172.22.0.4/get"}
+,7:headers;297:25:6:Server,12:nginx/1.24.0,]40:4:Date,29:Mon, 15 Dec 2025 14:09:06 GMT,]36:12:Content-Type,16:application/json,]24:14:Content-Length,3:158,]28:10:Connection,10:keep-alive,]35:27:Access-Control-Allow-Origin,1:*,]43:32:Access-Control-Allow-Credentials,4:true,]34:16:X-Intercepted-By,10:MitM-Lab03,]]12:http_version;8:HTTP/1.1,}7:request;320:4:path;4:/get,9:authority;0:,6:scheme;5:https,6:method;3:GET,4:port;3:443#4:host;10:172.22.0.4;13:timestamp_end;18:1765807746.9924889^15:timestamp_start;18:1765807746.9922009^8:trailers;0:~7:content;0:,7:headers;77:21:4:Host,10:172.22.0.4,]29:10:User-Agent,11:curl/8.14.1,]15:6:Accept,3:*/*,]]12:http_version;8:HTTP/1.1,}6:backup;0:~17:timestamp_created;18:1765807746.9922903^7:comment;0:;8:metadata;0:}6:marked;0:;9:is_replay;0:~11:intercepted;5:false!11:server_conn;1811:3:via;0:~19:timestamp_tcp_setup;18:1765807746.9614928^7:address;20:10:172.22.0.4;3:443#]19:timestamp_tls_setup;18:1765807746.9750319^13:timestamp_end;0:~15:timestamp_start;18:1765807746.9612541^3:sni;10:172.22.0.4;11:tls_version;7:TLSv1.3;11:cipher_list;0:]6:cipher;22:TLS_AES_256_GCM_SHA384;11:alpn_offers;16:2:h2,8:http/1.1,]4:alpn;8:http/1.1,16:certificate_list;1271:1265:-----BEGIN CERTIFICATE-----
+MIIDeTCCAmGgAwIBAgIUQLCan+DLYtrnyjjGW1sPChEKAuowDQYJKoZIhvcNAQEL
+BQAwTDELMAkGA1UEBhMCVVMxDDAKBgNVBAgMA0xhYjEMMAoGA1UEBwwDTGFiMQww
+CgYDVQQKDANMYWIxEzARBgNVBAMMCjE3Mi4yMi4wLjQwHhcNMjUxMjE1MTQwNzUz
+WhcNMjYxMjE1MTQwNzUzWjBMMQswCQYDVQQGEwJVUzEMMAoGA1UECAwDTGFiMQww
+CgYDVQQHDANMYWIxDDAKBgNVBAoMA0xhYjETMBEGA1UEAwwKMTcyLjIyLjAuNDCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIaitnTPhvOva0BOwVAAMmGp
+wbbJ8tfJzEeqrKGULzsmYUDEAECTa2OMqnnplsR5n1RI0pGPXeOIEpA5uYV4XJjX
+8phL7U4iDQ+DHZl620Q8HU4nmF687H4d5x1qbgvxZldszodp2ejpcycz8KcbeFAO
+6zs43ROLZmaxlGyhbyRe6DeCdXAerVJmgIzkr40Cesm2hgo2y32eJo+hR+zUCias
+bBZyuYAUC9zoyKQAvO8IIvqMd2daQbt6shvyad59Dbl+dDh7Gkj90xh4zQfXH9Rk
+fDvU3lVAqNo2bqeRftpCmyn5SVtsNbGaMJTKljTIwIKSIaGYISwdRn+JHel8i10C
+AwEAAaNTMFEwHQYDVR0OBBYEFOJcZkC77tgUEKhHgwNtXoJLI3RCMB8GA1UdIwQY
+MBaAFOJcZkC77tgUEKhHgwNtXoJLI3RCMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZI
+hvcNAQELBQADggEBACQcCpBxxIQ4vWssVHj88VJR/ubDKFN4AVgPqpJ6k/rsnYWp
+zZhBpK7sQDKYbmx2cNRZiESTpGWfuIUDU2f64bJs/JSjvyul360LGdyvpWg7/4u3
+pbIJ9XKE1bL5iAkTmnw5I33twn3Om6vbMSUA9ry/8qDKWxGUHohsTlfhLi2D1ygg
+OP8mY/PvNJoJA92vCdN4zvkyHgP1Mmujc1Cba8w1gu8eU4eF2DhiT3CF4zFxpiB0
+mWuCyiDAiwdlgZJgl2gXYtfDLGKG4l5eZj/cEeKRXiDTmh1q3LQ51sCAk73p4M+i
+EJthdST2cLDWFiq0ESvK2xf2ewrLV/WaPGBoMh8=
+-----END CERTIFICATE-----
+,]3:tls;4:true!5:error;0:~18:transport_protocol;3:tcp;2:id;36:824e0f26-d222-4361-8044-352de90dcd90;8:sockname;22:10:172.22.0.3;5:33916#]8:peername;20:10:172.22.0.4;3:443#]}11:client_conn;480:10:proxy_mode;11:transparent;8:mitmcert;0:~19:timestamp_tls_setup;17:1765807746.990185^13:timestamp_end;0:~15:timestamp_start;18:1765807746.9609044^3:sni;0:~11:tls_version;7:TLSv1.3;11:cipher_list;0:]6:cipher;22:TLS_AES_256_GCM_SHA384;11:alpn_offers;16:2:h2,8:http/1.1,]4:alpn;8:http/1.1,16:certificate_list;0:]3:tls;4:true!5:error;0:~18:transport_protocol;3:tcp;2:id;36:4b465675-fd8a-4a3f-8d10-700e49ba5bb6;8:sockname;20:10:172.22.0.4;3:443#]8:peername;22:10:172.22.0.2;5:41628#]}5:error;0:~2:id;36:0e9b07fb-9c4c-4d5b-b3f9-3c56bbe30c1d;4:type;4:http;7:version;2:21#}

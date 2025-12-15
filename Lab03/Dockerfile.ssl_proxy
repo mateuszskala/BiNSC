@@ -1,19 +1,22 @@
-FROM mitmproxy/mitmproxy:latest
+FROM --platform=linux/amd64 mitmproxy/mitmproxy:latest
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    iptables \
-    net-tools \
-    dnsutils \
-    openssl \
-    procps \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends --fix-missing \
+        iptables \
+        tcpdump \
+    || true && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /proxy
-COPY ./proxy_config /proxy/
-COPY ./interceptor_setup.sh /usr/local/bin/interceptor_setup.sh
 
-# mitmproxy will auto-generate certificates on first run
-RUN mkdir -p /root/.mitmproxy
+COPY ./proxy_config /proxy/
+COPY ./interceptor_setup.sh /usr/local/bin/
+COPY ./interceptor_normal.sh /usr/local/bin/
+COPY ./interceptor_attack.sh /usr/local/bin/
+
+RUN mkdir -p /root/.mitmproxy /proxy/output
 RUN chmod +x /usr/local/bin/interceptor_setup.sh
+RUN chmod +x /usr/local/bin/interceptor_normal.sh
+RUN chmod +x /usr/local/bin/interceptor_attack.sh
 
 CMD ["/bin/bash", "-c", "tail -f /dev/null"]

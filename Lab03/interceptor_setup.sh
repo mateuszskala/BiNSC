@@ -1,29 +1,24 @@
 #!/bin/bash
 
-echo "[INFO] Configuring transparent proxy..."
+echo "=== Konfiguracja posrednika SSL ==="
 
-FORWARD=$(cat /proc/sys/net/ipv4/ip_forward)
-if [ "$FORWARD" -eq 1 ]; then
-    echo "[OK] IP forwarding is enabled"
-else
-    echo "[ERROR] IP forwarding is not enabled"
-    exit 1
-fi
+echo "Wlaczanie przekazywania IP..."
+echo 1 > /proc/sys/net/ipv4/ip_forward 2>/dev/null || echo "Przekazywanie IP ustawione przez docker-compose"
 
-echo "[INFO] Setting up iptables rules..."
-
+echo "Konfiguracja iptables..."
+iptables -t nat -F PREROUTING
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8080
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-iptables -A FORWARD -i eth0 -j ACCEPT
 
-echo "[INFO] iptables rules configured:"
-iptables -t nat -L -n -v
+echo "Reguly iptables:"
+iptables -t nat -L PREROUTING -n -v | grep REDIRECT
 
 echo ""
-echo "[INFO] Transparent proxy setup complete!"
-echo "[INFO] You can now start mitmproxy with:"
-echo "  mitmproxy -m transparent --listen-port 8080 -w /proxy/output/capture.mitm"
+echo "Uruchamianie mitmdump na porcie 8080..."
+echo "Plik: /proxy/output/capture.mitm"
+echo "Nacisnij Ctrl+C aby zatrzymac"
 echo ""
-echo "Or with custom script:"
-echo "  mitmproxy -m transparent --listen-port 8080 -s /proxy/ssl_interceptor.py -w /proxy/output/capture.mitm"
+
+mitmdump -m transparent --listen-port 8080 \
+  -s /proxy/ssl_interceptor.py \
+  -w /proxy/output/capture.mitm
