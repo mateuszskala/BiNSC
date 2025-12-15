@@ -6,9 +6,16 @@ WORKDIR /app
 COPY intercept_advanced.py /app/
 
 RUN apt-get update && apt-get install -y \
+    iproute2 \
     iptables \
+    iputils-ping \
     net-tools \
+    python3 \
+    tshark \
     tcpdump \
+    nano \
+    dsniff \
+    vim \
+    dnsmasq \
     && rm -rf /var/lib/apt/lists/*
-
 CMD ["mitmdump", "-s", "/app/intercept_advanced.py", "--listen-port", "8080"]

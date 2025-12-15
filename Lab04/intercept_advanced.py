@@ -46,19 +46,18 @@ class Interceptor:
     def response(self, flow: http.HTTPFlow) -> None:
         # Opcjonalna modyfikacja HTML dla hosta example.com
         try:
-            if "example.com" in flow.request.host:
-                if flow.response.status_code == 200:
-                    content_type = flow.response.headers.get("content-type", "")
-                    if "text/html" in content_type and flow.response.content:
-                        injection = """
+            if flow.response.status_code == 200:
+                content_type = flow.response.headers.get("content-type", "")
+                if "text/html" in content_type and flow.response.content:
+                    injection = """
 <script>
 console.log("This page has been modified by MitM");
 // Malicious code could be injected here
 </script>
 """.encode("utf-8")
 
-                        flow.response.content = injection + flow.response.content
-                        ctx.log.warn("[!] HTML content modified")
+                    flow.response.content = injection + flow.response.content
+                    ctx.log.warn("[!] HTML content modified")
         except Exception as e:
             ctx.log.info(f"Error modifying response: {e}")
 
