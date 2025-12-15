@@ -1,0 +1,54 @@
+services:
+  client01:
+    build:
+      context: .
+      dockerfile: Dockerfile.client01
+    container_name: mitm_client01
+    networks:
+      mitm_network:
+        ipv4_address: 172.20.0.2
+    volumes:
+      - ./client01_files:/workspace
+    stdin_open: true
+    tty: true
+
+  server01:
+    build:
+      context: .
+      dockerfile: Dockerfile.server01
+    container_name: mitm_server01
+    networks:
+      mitm_network:
+        ipv4_address: 172.20.0.4
+    volumes:
+      - ./server01_files:/workspace
+    expose:
+      - "80"
+    environment:
+      - NGINX_HOST=server01
+      - NGINX_PORT=80
+
+  attacker01:
+    build:
+      context: .
+      dockerfile: Dockerfile.attacker01
+    container_name: mitm_attacker01
+    networks:
+      mitm_network:
+        ipv4_address: 172.20.0.3
+    volumes:
+      - ./attacker01_files:/workspace
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    devices:
+      - /dev/net/tun
+    stdin_open: true
+    tty: true
+
+networks:
+  mitm_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

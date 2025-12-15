@@ -1,0 +1,37 @@
+services:
+  client:
+    cap_add:
+      - NET_ADMIN
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: dns_client
+    dns: 8.8.8.8
+    networks:
+      mitm_network:
+        ipv4_address: 172.30.1.5
+    stdin_open: true   
+    tty: true  
+
+  attacker:
+    privileged: true
+    build:
+      context: .
+      dockerfile: Dockerfile.attacker
+    container_name: dns_attacker
+    dns: 8.8.8.8
+    networks:
+      mitm_network:
+        ipv4_address: 172.30.1.10
+    volumes:
+     - ./dnsmasq.conf:/etc/dnsmasq.conf:rw
+    stdin_open: true   
+    tty: true  
+
+networks:
+  mitm_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.1.0/24
+        

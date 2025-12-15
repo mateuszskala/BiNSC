@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y \
+    curl \
+    iputils-ping \
+    net-tools \
+    dnsutils \
+    tcpdump \
+    telnet \
+	iproute2 \
+	lynx \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+CMD ["/bin/bash"]

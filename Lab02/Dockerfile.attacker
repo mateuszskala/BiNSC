@@ -1,0 +1,24 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    iproute2 \
+    iptables \
+    iputils-ping \
+    net-tools \
+    python3 \
+    tshark \
+    tcpdump \
+    nano \
+    dsniff \
+	vim \
+    dnsmasq \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY ./attacker_files /root/
+
+RUN chmod +x /root/attacker_setup.sh
+
+WORKDIR /root
+
+ENTRYPOINT ["/root/attacker_setup.sh"]
