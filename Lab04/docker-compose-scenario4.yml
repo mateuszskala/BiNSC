@@ -8,8 +8,7 @@ services:
     stdin_open: true
     tty: true
     command: ["--startup-url", "http://172.20.0.4:8080/"]
-    ipc: host
-    shm_size: "1g"
+    shm_size: "1gb"
     
   server01:
     image: nginx:alpine

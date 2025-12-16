@@ -44,30 +44,20 @@ class Interceptor:
         ctx.log.info(f"Request #{self.request_count}: {flow.request.pretty_url}")
 
     def response(self, flow: http.HTTPFlow) -> None:
-        # Modyfikacja HTML + logowanie odpowiedzi
+        # Opcjonalna modyfikacja HTML dla hosta example.com
         try:
             if flow.response.status_code == 200:
                 content_type = flow.response.headers.get("content-type", "")
                 if "text/html" in content_type and flow.response.content:
                     injection = """
 <script>
-alert("MITM: Twoje połączenie jest podsłuchiwane!");
+console.log("This page has been modified by MitM");
+// Malicious code could be injected here
 </script>
-"""
+""".encode("utf-8")
 
-                    # Pobierz HTML jako tekst
-                    html = flow.response.get_text()
-
-                    # Wstrzyknij tuż ZA <body>
-                    if "<body>" in html:
-                        html = html.replace("<body>", "<body>" + injection, 1)
-                    else:
-                        # awaryjnie: dołóż na początek
-                        html = injection + html
-
-                    # Zapisz zmodyfikowaną odpowiedź
-                    flow.response.set_text(html)
-                    ctx.log.warn("[!] HTML content modified (alert injected)")
+                    flow.response.content = injection + flow.response.content
+                    ctx.log.warn("[!] HTML content modified")
         except Exception as e:
             ctx.log.info(f"Error modifying response: {e}")
 
