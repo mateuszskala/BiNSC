@@ -1,10 +1,24 @@
 # Python
 __pycache__/
 *.pyc
-
+**/__pycache__
+**/*.pyc
 # Logs
 Lab04/intercept_logs/
+
+Lab02/instrukcja/*.*
+!Lab02/instrukcja/*.pdf
+!Lab02/instrukcja/*.tex
+# Lab03 proxy output files (generated during runtime)
+Lab03/proxy_output/*.mitm
+Lab03/proxy_output/*.mit
+Lab03/proxy_output/*.har
+Lab03/proxy_output/*.pcap
 
 # OS
 .DS_Store
 Thumbs.db
+
+#Others
+*.backup
+**/*.backup
