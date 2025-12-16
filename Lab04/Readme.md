@@ -1,4 +1,28 @@
 # Scenariusz 4: Advanced HTTP/HTTPS Interception
+        172.20.0.2                  172.20.0.3                      172.20.0.4
+      mitm_client01             mitm_attacker01                  mitm_server01
+      (Client)                  (Attacker / MITM)                (Server HTTP)
+           |                         |                               |
+           |  normalnie:             |                               |
+           +------------------------>|------------------------------>+
+           |      HTTP               |              HTTP             |
+
+           |   w scenariuszu labu:   |                               |
+           |                         |                               |
+           +------------------------>|------------------------------>+
+           |      HTTP (GET/POST)    |      HTTP do serwera          |
+           |                         |                               |
+           |<------------------------+<------------------------------+
+           |   zmodyfikowany HTML    |   odpowiedź z serwera         |
+           |   + wstrzyknięty JS     |   przechodzi przez mitmproxy  |
+
+mitm_attacker01:
+  - ARP spoofing między 172.20.0.2 a 172.20.0.4
+  - iptables: przekierowanie portu 80 → 8080 (mitmproxy)
+  - mitmproxy + intercept_advanced.py:
+      * logowanie żądań/odpowiedzi do /app/logs
+      * wstrzykiwanie JavaScript do odpowiedzi HTML
+      * wyłapywanie loginów i haseł z POST
 
 ## Komponenty
 
